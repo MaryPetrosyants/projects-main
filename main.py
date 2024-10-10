@@ -1,9 +1,10 @@
 
 import sys
 from task_manager import TaskManager
-
+from task_storage_to_json import TaskStorageToJson
 def main():
-    manager = TaskManager()
+    storage = TaskStorageToJson('tasks.json')
+    manager = TaskManager(storage)
     command=sys.argv[1]
     if command == 'add':
         print(manager.add_task(" ".join(sys.argv[2:])))
@@ -12,8 +13,8 @@ def main():
         print(manager.delete_task(task_id))
     elif command == 'list':
         task_list = manager.list_tasks()
-        for task in task_list:
-            print(task)
+        for i, task in enumerate(task_list):
+            print (task_list[i])
 
 if __name__ == "__main__":
     main()

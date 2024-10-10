@@ -1,1 +1,22 @@
-{"1": {"id": 1, "name": "test_task", "status": "not done"}, "2": {"id": 2, "name": "test_task", "status": "not done"}, "3": {"id": 3, "name": "test_task", "status": "not done"}, "4": {"id": 4, "name": "test_task", "status": "not done"}, "5": {"id": 5, "name": "task4", "status": "not done"}, "6": {"id": 6, "name": "task2", "status": "not done"}, "7": {"id": 7, "name": "task test 222", "status": "not done"}}
+[
+    {
+        "id": 1,
+        "name": "test_task",
+        "status": "not done"
+    },
+    {
+        "id": 3,
+        "name": "test_task",
+        "status": "not done"
+    },
+    {
+        "id": 144009334808456689979654407274097972537,
+        "name": "testtest",
+        "status": "Not done"
+    },
+    {
+        "id": 321410074672934413566794055095636322965,
+        "name": "test1",
+        "status": "Not done"
+    }
+]
