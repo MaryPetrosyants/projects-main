@@ -3,16 +3,13 @@ from abc import ABC, abstractmethod
 
 class Storage(ABC):
 
+   
     @abstractmethod
-    def save(self):
+    def add(self, name: str):
         pass
 
     @abstractmethod
-    def add(self):
-        pass
-
-    @abstractmethod
-    def delete(self):
+    def delete(self, id: str):
         pass
 
     @abstractmethod
