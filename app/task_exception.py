@@ -1,9 +1,12 @@
+from typing import Union
+
+
 class TaskError(Exception):
     pass
 
 
 class TaskNotFound(TaskError):
-    def __init__(self, id: int):
+    def __init__(self, id: Union[int, str]):
         super().__init__(f"Task {id} not found")
 
 
