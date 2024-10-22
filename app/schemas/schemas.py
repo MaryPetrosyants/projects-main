@@ -1,6 +1,5 @@
 from typing import List
 from pydantic import BaseModel, Field, ConfigDict
-from datetime import datetime
 
 
 class TaskSchema(BaseModel):
@@ -14,5 +13,6 @@ class TaskSchema(BaseModel):
 
 class CreateTask(BaseModel):
     name: str
+
     
 

@@ -10,9 +10,11 @@ class Task(Base):
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String, nullable=False)
     status = Column(String, nullable=True, default="Not done")
-    
+    user_id = Column(Integer, index=True)
 
 class TaskJson(BaseModel):
     id: str
     name: str
     status: str = "Not done"
+
+

@@ -5,7 +5,7 @@ class Storage(ABC):
 
    
     @abstractmethod
-    def add(self, name: str):
+    def add(self):
         pass
 
     @abstractmethod

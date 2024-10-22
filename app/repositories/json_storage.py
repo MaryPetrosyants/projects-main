@@ -2,10 +2,10 @@ import json
 import os
 from typing import Any
 import uuid
-from storage import Storage
-from models import Task, TaskJson
+from repositories.storage import Storage
+from models.models import Task, TaskJson
 from fastapi.encoders import jsonable_encoder
-from task_exception import TaskError, TaskNotFound, TaskAlreadyExistError
+from exceptions.task_exception import TaskError, TaskNotFound, TaskAlreadyExistError
 
 
 class JsonStorage(Storage):
