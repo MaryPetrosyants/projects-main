@@ -4,12 +4,9 @@ from config.database import get_db
 from passlib.context import CryptContext
 from models.user import User
 from repositories.user_storage import UserStorage
-from datetime import timedelta
-from fastapi.security import OAuth2PasswordBearer
 from models.user import User
 from schemas.token import Token
-from repositories.auth import create_access_token, authenticate_user, create_access_token
-
+from repositories.auth import create_access_token, authenticate_user, create_refresh_token
 
 
 class Users(UserStorage):
@@ -31,7 +28,7 @@ class Users(UserStorage):
     def get_list():
         pass
 
-    def login(email, password):
+    def login(email, password) -> str:
         user = authenticate_user(email, password)
         if not user:
             raise HTTPException(
@@ -40,4 +37,10 @@ class Users(UserStorage):
                 headers={"WWW-Authenticate": "Bearer"},
             )
         access_token = create_access_token(user)
-        return Token(access_token=access_token, token_type="bearer")
+        refresh_token = create_refresh_token(user)
+        db = next(get_db())
+        db_user = db.query(User).filter(User.id == user.id).first()
+        db_user.refresh_token = refresh_token
+        db.commit()
+
+        return access_token, refresh_token

@@ -5,7 +5,7 @@ from schemas.schemas import CreateTask
 from config.database import get_db
 from repositories.auth import get_current_user
 from typing import Annotated
-from fastapi import Depends
+from fastapi import Depends, HTTPException, status
 from schemas.user import CreateUser, UserSchema, CurrentUser
 class SqlliteStorage(Storage):
 
@@ -24,6 +24,7 @@ class SqlliteStorage(Storage):
         if user_id == db_task.user_id:
             db.delete(db_task)
             db.commit()
+        else: HTTPException(status_code=404, detail="Item not found")
         
 
     def update(id: int, name: str, status: str, current_user) -> None:
@@ -36,7 +37,7 @@ class SqlliteStorage(Storage):
                 task.id = id
                 task.status = status
                 db.commit()
-
+            else: HTTPException(status_code=404, detail="Item not found")
         else:
             raise TaskNotFound(id)
 
